@@ -2,6 +2,8 @@ package org.cuitytj.interfaces;
 
 import java.util.Date;
 
+import org.cuitytj.mapper.UserMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /** 
@@ -11,11 +13,13 @@ import org.springframework.stereotype.Service;
 */
 @Service
 public class Test1InterfaceImpl implements Test1Interface {
-
+	
+	@Autowired(required=false)
+	private UserMapper userMapper;
+	
 	@Override
 	public Date getCurrentTime() {
-		
+		System.out.println(userMapper.selectByPrimaryKey(1).getUsername());
 		return new Date();
 	}
-
 }
